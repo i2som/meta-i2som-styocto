@@ -1,0 +1,28 @@
+SUMMARY = "Trusted Firmware-A for STM32MP1"
+SECTION = "bootloaders"
+LICENSE = "BSD-3-Clause"
+LIC_FILES_CHKSUM = "file://license.rst;md5=e927e02bca647e14efd87e9e914b2443"
+
+TF_VERSION = "2.0"
+PV = "${TF_VERSION}"
+
+#S = "${WORKDIR}/arm-trusted-firmware-${PV}"
+S = "${WORKDIR}/git"
+
+require tf-a-i2som-common.inc
+
+# ---------------------------------
+# Configure devupstream class usage
+# ---------------------------------
+BBCLASSEXTEND = "devupstream:target"
+
+SRC_URI = "git://${HOME}/PanGu/arm-trusted-firmware;protocol=file;name=tfa;branch=panguboard"
+SRCREV = "a26789cad72229dd8a2a30ab510c3386d3ccfc35"
+SRCREV_FORMAT = "tfa"
+PV = "${TF_VERSION}+github+${SRCPV}"
+# ---------------------------------
+# Configure default preference to manage dynamic selection between tarball and github
+# ---------------------------------
+#STM32MP_SOURCE_SELECTION ?= "tarball"
+
+#DEFAULT_PREFERENCE = "${@bb.utils.contains('STM32MP_SOURCE_SELECTION', 'github', '-1', '1', d)}"
