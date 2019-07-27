@@ -51,6 +51,7 @@ DISTRO ??= "nodistro"
 # The default is a downloads directory under TOPDIR which is the build directory.
 #
 #DL_DIR ?= "${TOPDIR}/downloads"
+DL_DIR ?= "${HOME}/PanGu/downloads"
 
 #
 # Where to place shared-state files
@@ -67,6 +68,7 @@ DISTRO ??= "nodistro"
 # The default is a sstate-cache directory under TOPDIR.
 #
 #SSTATE_DIR ?= "${TOPDIR}/sstate-cache"
+SSTATE_DIR ?= "${HOME}/PanGu/sstate-cache"
 
 #
 # Where to place the build output
