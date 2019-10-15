@@ -66,6 +66,9 @@ IMAGE_QT_MANDATORY_PART = " \
 #
 # QT part add-ons
 #
+#qtwebengine
+#qtwebengine-mkspecs
+#qtwebengine-dev
 IMAGE_QT_OPTIONAL_PART = " \
    qtcanvas3d \
    \
@@ -78,8 +81,6 @@ IMAGE_QT_OPTIONAL_PART = " \
    qtlocation              \
    qtlocation-qmlplugins   \
    qtlocation-plugins      \
-   \
-   qtwebkit                \
    \
    qtquickcontrols         \
    qtquickcontrols-qmlplugins \
@@ -96,6 +97,9 @@ IMAGE_QT_OPTIONAL_PART = " \
    qtlocation              \
    qtlocation-plugins      \
    qtlocation-qmlplugins   \
+   \
+   qtwebsockets            \
+   qtwayland               \
    "
 
 #
@@ -107,8 +111,6 @@ IMAGE_QT_EXAMPLES_PART = " \
    qtdeclarative-examples  \
    \
    qtmultimedia-examples   \
-   \
-   qtwebkit-examples       \
    \
    qtquickcontrols-examples \
    qtscript-examples       \
@@ -125,6 +127,12 @@ IMAGE_QT_EXAMPLES_PART = " \
    qt5nmapcarousedemo      \
    cinematicexperience     \
    qtsmarthome             \
+   \
+   qtwayland-examples      \
+   \
+   qtdemo \
+   tscalibrate \
+   quectel-cm \
    "
 
 # INSTALL addons
@@ -150,6 +158,9 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     \
     packagegroup-core-eclipse-debug         \
     \
+    packagegroup-framework-tools-network-extra  \
+    packagegroup-framework-tools-python2-extra  \
+    packagegroup-framework-tools-python3-extra  \
     \
     ${IMAGE_DISPLAY_PART}       \
     ${IMAGE_MM_PART}            \
