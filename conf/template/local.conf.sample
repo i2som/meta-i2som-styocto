@@ -271,6 +271,8 @@ PACKAGE_CLASSES = "package_deb"
 # Setup environment for builds binary reproducibility
 INHERIT += "reproducible_build_openstlinux"
 
+ACCEPT_EULA_pangu = "1"
+
 # =========================================================================
 # Configure STM32MP default version to github
 # =========================================================================
