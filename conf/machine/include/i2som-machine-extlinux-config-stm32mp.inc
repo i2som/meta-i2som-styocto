@@ -11,12 +11,12 @@ UBOOT_EXTLINUX_CONFIG_FLAGS += "${@bb.utils.contains('FLASHLAYOUT_CONFIG_LABELS'
 UBOOT_EXTLINUX_CONFIG_FLAGS += "${@bb.utils.contains('FLASHLAYOUT_CONFIG_LABELS', 'sdcard', '%s' % bb.utils.contains('BOOTSCHEME_LABELS', 'optee', 'sdcard sdcard-optee', 'sdcard', d), '', d)}"
 
 # Provide the list of supported devicetree for each config flag
-UBOOT_EXTLINUX_DEVICEFLAG_emmc          ?= "${STM32MP_DT_FILES_ED} ${STM32MP_DT_FILES_EV} ${PANGU_DT_FILES}"
+UBOOT_EXTLINUX_DEVICEFLAG_emmc          ?= "${PANGU_DT_FILES}"
 UBOOT_EXTLINUX_DEVICEFLAG_emmc-optee    ?= "${STM32MP_DT_FILES_ED} ${STM32MP_DT_FILES_EV}"
 UBOOT_EXTLINUX_DEVICEFLAG_nand          ?= "${STM32MP_DT_FILES_EV}"
 UBOOT_EXTLINUX_DEVICEFLAG_nor-emmc      ?= "${STM32MP_DT_FILES_EV}"
 UBOOT_EXTLINUX_DEVICEFLAG_nor-sdcard    ?= "${STM32MP_DT_FILES_EV}"
-UBOOT_EXTLINUX_DEVICEFLAG_sdcard        ?= "${STM32MP_DT_FILES_DK} ${STM32MP_DT_FILES_ED} ${STM32MP_DT_FILES_EV} ${PANGU_DT_FILES}"
+UBOOT_EXTLINUX_DEVICEFLAG_sdcard        ?= "${PANGU_DT_FILES}"
 UBOOT_EXTLINUX_DEVICEFLAG_sdcard-optee  ?= "${STM32MP_DT_FILES_DK} ${STM32MP_DT_FILES_ED} ${STM32MP_DT_FILES_EV}"
 
 # Set generic extlinux bootdevice variable to ease definition
@@ -99,8 +99,8 @@ UBOOT_EXTLINUX_CONSOLE = "console=${@d.getVar('SERIAL_CONSOLE').split()[1]},${@d
 # DK2 configuration
 # -----------------------------------------------------------------------------
 # Define available targets to use
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-dk2_sdcard"
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-dk2_sdcard-optee"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-dk2_sdcard"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-dk2_sdcard-optee"
 # Define bootprefix for each target
 UBOOT_EXTLINUX_BOOTPREFIXES_mp157c-dk2_sdcard       = "${EXTLINUX_BOOTDEVICE_SDCARD}_stm32mp157c-dk2_"
 UBOOT_EXTLINUX_BOOTPREFIXES_mp157c-dk2_sdcard-optee = "${EXTLINUX_BOOTDEVICE_SDCARD}_stm32mp157c-dk2-optee_"
@@ -148,28 +148,34 @@ UBOOT_EXTLINUX_BOOTPREFIXES_mp157a-panguboard_emmc         = "${EXTLINUX_BOOTDEV
 UBOOT_EXTLINUX_BOOTPREFIXES_mp157a-panguboard_sdcard       = "${EXTLINUX_BOOTDEVICE_SDCARD}_panguboard_"
 # Define labels for each target
 UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         = "stm32mp157a-panguboard-emmc"
-UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         += "stm32mp157a-panguboard-lcd-emmc"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         += "stm32mp157a-panguboard-lcd043p800c-emmc"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         += "stm32mp157a-panguboard-lcd070p1024c-emmc"
 UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         += "stm32mp157a-panguboard-mipi-emmc"
 UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       = "stm32mp157a-panguboard-sdcard"
-UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       += "stm32mp157a-panguboard-lcd-sdcard"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       += "stm32mp157a-panguboard-lcd043p800c-sdcard"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       += "stm32mp157a-panguboard-lcd070p1024c-sdcard"
 UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       += "stm32mp157a-panguboard-mipi-sdcard"
 # Define default boot config for each target
 UBOOT_EXTLINUX_DEFAULT_LABEL_mp157a-panguboard_emmc         ?= "stm32mp157a-panguboard-emmc"
 UBOOT_EXTLINUX_DEFAULT_LABEL_mp157a-panguboard_sdcard       ?= "stm32mp157a-panguboard-sdcard"
 # Define FDT overrides for all labels
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-emmc         = "/stm32mp157a-panguboard.dtb"
-UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd-emmc         = "/stm32mp157a-panguboard-lcd.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd043p800c-emmc         = "/stm32mp157a-panguboard-lcd043p800c.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd070p1024c-emmc         = "/stm32mp157a-panguboard-lcd070p1024c.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-mipi-emmc         = "/stm32mp157a-panguboard-mipi.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-sdcard       = "/stm32mp157a-panguboard.dtb"
-UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd-sdcard       = "/stm32mp157a-panguboard-lcd.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd043p800c-sdcard       = "/stm32mp157a-panguboard-lcd043p800c.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd070p1024c-sdcard       = "/stm32mp157a-panguboard-lcd043p1024c.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-mipi-sdcard       = "/stm32mp157a-panguboard-mipi.dtb"
 # Define ROOT overrides for all labels
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-emmc         = "${EXTLINUX_ROOT_EMMC}"
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-mipi-emmc       = "${EXTLINUX_ROOT_EMMC}"
-UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd-emmc       = "${EXTLINUX_ROOT_EMMC}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd043p800c-emmc       = "${EXTLINUX_ROOT_EMMC}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd070p1024c-emmc       = "${EXTLINUX_ROOT_EMMC}"
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-sdcard       = "${EXTLINUX_ROOT_SDCARD}"
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-mipi-sdcard       = "${EXTLINUX_ROOT_SDCARD}"
-UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd-sdcard       = "${EXTLINUX_ROOT_SDCARD}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd043p800c-sdcard       = "${EXTLINUX_ROOT_SDCARD}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd070p1024c-sdcard       = "${EXTLINUX_ROOT_SDCARD}"
 
 
 
@@ -177,10 +183,10 @@ UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd-sdcard       = "${EXTLINUX_ROOT_S
 # ED1 configuration
 # -----------------------------------------------------------------------------
 # Define available targets to use
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ed1_emmc"
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ed1_emmc-optee"
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ed1_sdcard"
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ed1_sdcard-optee"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ed1_emmc"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ed1_emmc-optee"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ed1_sdcard"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ed1_sdcard-optee"
 # Define bootprefix for each target
 UBOOT_EXTLINUX_BOOTPREFIXES_mp157c-ed1_emmc         = "${EXTLINUX_BOOTDEVICE_EMMC}_stm32mp157c-ed1_"
 UBOOT_EXTLINUX_BOOTPREFIXES_mp157c-ed1_emmc-optee   = "${EXTLINUX_BOOTDEVICE_EMMC}_stm32mp157c-ed1-optee_"
@@ -211,13 +217,13 @@ UBOOT_EXTLINUX_ROOT_stm32mp157c-ed1-sdcard-optee = "${EXTLINUX_ROOT_SDCARD_OPTEE
 # EV1 configuration
 # -----------------------------------------------------------------------------
 # Define available targets to use
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_emmc"
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_emmc-optee"
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_nand"
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_nor-sdcard"
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_nor-emmc"
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_sdcard"
-UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_sdcard-optee"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_emmc"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_emmc-optee"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_nand"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_nor-sdcard"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_nor-emmc"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_sdcard"
+#UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157c-ev1_sdcard-optee"
 # Define bootprefix for each target
 UBOOT_EXTLINUX_BOOTPREFIXES_mp157c-ev1_emmc         = "${EXTLINUX_BOOTDEVICE_EMMC}_stm32mp157c-ev1_"
 UBOOT_EXTLINUX_BOOTPREFIXES_mp157c-ev1_emmc-optee   = "${EXTLINUX_BOOTDEVICE_EMMC}_stm32mp157c-ev1-optee_"
