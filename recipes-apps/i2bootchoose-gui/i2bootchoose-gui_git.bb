@@ -15,14 +15,18 @@ SRC_URI = "git://github.com/i2som/i2bootchoose_gui.git;protocol=git;"
 SRCREV = "b8277b59f1be06bcf80a86a08c2407f8703843e2"
 PV = "0.1+git${SRCPV}"
 
+SRC_URI_append = " file://bootmenuswitch.ini"
+
 S = "${WORKDIR}/git"
 
 inherit qmake5
 
 do_install_append() {
     install -d ${D}${prefix}/local/i2som/bin/
+    install -d ${D}${prefix}/local/i2som/appentry
 
     install -m 0755 ${B}/i2bootchoose_gui ${D}${STM32MP_USERFS_MOUNTPOINT_IMAGE}/i2som/bin
+    install -m 0755 ${WORKDIR}/bootmenuswitch.ini ${D}${STM32MP_USERFS_MOUNTPOINT_IMAGE}/i2som/appentry
 }
 
 FILES_${PN} = "${prefix}/local"
