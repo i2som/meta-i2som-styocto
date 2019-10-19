@@ -1,0 +1,12 @@
+[unit]
+Description=Qt SmartHome
+After=multi-user.target
+
+[Service]
+Type=simple
+user=root
+ExecStart=/usr/local/qtdemo.sh
+#Restart=always
+
+[Install]
+WantedBy=multi-user.target
