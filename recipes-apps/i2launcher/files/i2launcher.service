@@ -1,0 +1,12 @@
+[unit]
+Description=i2SOM Qt demo application
+After=multi-user.target
+
+[Service]
+Type=simple
+user=root
+ExecStart=/usr/local/i2som/i2launcher.sh
+#Restart=always
+
+[Install]
+WantedBy=multi-user.target
