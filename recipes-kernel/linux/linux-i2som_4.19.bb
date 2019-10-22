@@ -15,7 +15,7 @@ S = "${WORKDIR}/git"
 BBCLASSEXTEND = "devupstream:target"
 
 SRC_URI = "git:///${HOME}/PanGu/linux-st;protocol=file;branch=v${LINUX_VERSION}-r1.4-pangu;name=linux"
-SRCREV = "59ba0fce4f864b8c88df08d2e3a5d715982a63e5"
+SRCREV = "ef13b6fb251d52984793d3aba4c9d19f822047c4"
 SRCREV_FORMAT = "linux"
 PV = "${LINUX_VERSION}+github+${SRCPV}"
 
