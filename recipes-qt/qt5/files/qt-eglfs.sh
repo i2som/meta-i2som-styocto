@@ -14,7 +14,7 @@ then
 	export TSLIB_TSEVENTTYPE=INPUT
 
 	export QT_QPA_EGLFS_TSLIB=1
-	export QT_QPA_EVDEV_MOUSE_PARAMETERS=
+	export QT_QPA_EVDEV_MOUSE_PARAMETERS=abs
 	export QT_QPA_EGLFS_KMS_CONFIG=/usr/share/qt5/cursor.json
 	export QT_QPA_GENERIC_PLUGINS=tslib:/dev/input/event1,evdevmouse:/dev/input/event1
 	export QT_QPA_EGLFS_DISABLE_INPUT=1
