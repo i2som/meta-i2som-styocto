@@ -53,7 +53,7 @@ FLASHLAYOUT_BOOTSCHEME_LABELS ??= "basic optee trusted"
 #           2) list
 #           3) Default 'list' to 'none' when not defined
 # -----------------------------------------------------------------------------
-FLASHLAYOUT_CONFIG_LABELS ??= "emmc nand-4-256 nor-sdcard nor-emmc nor-nand-4-256 sdcard"
+FLASHLAYOUT_CONFIG_LABELS ??= "emmc nand-2-128 nand-4-256 nor-sdcard nor-emmc nor-nand-4-256 sdcard"
 
 # -----------------------------------------------------------------------------
 # Define label types
@@ -71,6 +71,7 @@ FLASHLAYOUT_TYPE_LABELS_emmc = "${STM32MP_DT_FILES_ED} ${STM32MP_DT_FILES_EV} ${
 # NAND
 # Set flashlayout file generation to eval board only
 FLASHLAYOUT_TYPE_LABELS_nand-4-256 = "${STM32MP_DT_FILES_EV}"
+FLASHLAYOUT_TYPE_LABELS_nand-2-128 = "${STM32MP_DT_FILES_EV} ${PANGU_DT_FILE}"
 # NOR
 # Set flashlayout file generation to eval board only
 FLASHLAYOUT_TYPE_LABELS_nor-emmc       = "${STM32MP_DT_FILES_EV}"
@@ -98,6 +99,7 @@ FLASHLAYOUT_TYPE_LABELS_sdcard = "${STM32MP_DT_FILES_DK} ${STM32MP_DT_FILES_ED} 
 # -----------------------------------------------------------------------------
 FLASHLAYOUT_PARTITION_LABELS_basic_emmc           = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl bootfs vendorfs rootfs userfs"
 FLASHLAYOUT_PARTITION_LABELS_basic_nand-4-256     = "none"
+FLASHLAYOUT_PARTITION_LABELS_basic_nand-2-128     = "none"
 FLASHLAYOUT_PARTITION_LABELS_basic_nor-nand-4-256 = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl logo empty"
 FLASHLAYOUT_PARTITION_LABELS_basic_nor-emmc       = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl logo empty"
 FLASHLAYOUT_PARTITION_LABELS_basic_nor-sdcard     = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl logo empty bootfs vendorfs rootfs userfs"
@@ -105,6 +107,7 @@ FLASHLAYOUT_PARTITION_LABELS_basic_sdcard         = "fsbl1-boot ssbl-boot fsbl1 
 
 FLASHLAYOUT_PARTITION_LABELS_optee_emmc           = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl teeh teed teex bootfs vendorfs rootfs userfs"
 FLASHLAYOUT_PARTITION_LABELS_optee_nand-4-256     = "fsbl1-boot ssbl-boot fsbl1 ssbl ssbl2 teeh teed teex ubifs"
+FLASHLAYOUT_PARTITION_LABELS_optee_nand-2-128     = "fsbl1-boot ssbl-boot fsbl1 ssbl ssbl2 teeh teed teex ubifs"
 FLASHLAYOUT_PARTITION_LABELS_optee_nor-nand-4-256 = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl logo teeh teed teex empty empty2 empty3 ubifs"
 FLASHLAYOUT_PARTITION_LABELS_optee_nor-emmc       = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl logo teeh teed teex empty bootfs vendorfs rootfs userfs"
 FLASHLAYOUT_PARTITION_LABELS_optee_nor-sdcard     = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl logo teeh teed teex empty bootfs vendorfs rootfs userfs"
@@ -112,6 +115,7 @@ FLASHLAYOUT_PARTITION_LABELS_optee_sdcard         = "fsbl1-boot ssbl-boot fsbl1 
 
 FLASHLAYOUT_PARTITION_LABELS_trusted_emmc           = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl bootfs vendorfs rootfs userfs"
 FLASHLAYOUT_PARTITION_LABELS_trusted_nand-4-256     = "fsbl1-boot ssbl-boot fsbl1 ssbl ssbl2 ubifs"
+FLASHLAYOUT_PARTITION_LABELS_trusted_nand-2-128     = "fsbl1-boot ssbl-boot fsbl1 ssbl ssbl2 ubifs"
 FLASHLAYOUT_PARTITION_LABELS_trusted_nor-nand-4-256 = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl logo empty empty2 empty3 ubifs"
 FLASHLAYOUT_PARTITION_LABELS_trusted_nor-emmc       = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl logo empty bootfs vendorfs rootfs userfs"
 FLASHLAYOUT_PARTITION_LABELS_trusted_nor-sdcard     = "fsbl1-boot ssbl-boot fsbl1 fsbl2 ssbl logo empty bootfs vendorfs rootfs userfs"
@@ -173,6 +177,7 @@ FLASHLAYOUT_PARTITION_ID_userfs     = "0x24"
 
 FLASHLAYOUT_PARTITION_TYPE                  = "Binary"
 FLASHLAYOUT_PARTITION_TYPE_nand-4-256_fsbl1 = "Binary(2)"
+FLASHLAYOUT_PARTITION_TYPE_nand-2-128_fsbl1 = "Binary(2)"
 FLASHLAYOUT_PARTITION_TYPE_ubifs            = "System"
 FLASHLAYOUT_PARTITION_TYPE_bootfs           = "System"
 FLASHLAYOUT_PARTITION_TYPE_vendorfs         = "FileSystem"
@@ -181,6 +186,7 @@ FLASHLAYOUT_PARTITION_TYPE_userfs           = "FileSystem"
 
 FLASHLAYOUT_PARTITION_DEVICE_emmc = "${DEVICE_EMMC}"
 FLASHLAYOUT_PARTITION_DEVICE_nand-4-256 = "${DEVICE_NAND}"
+FLASHLAYOUT_PARTITION_DEVICE_nand-2-128 = "${DEVICE_NAND}"
 FLASHLAYOUT_PARTITION_DEVICE_nor = "${DEVICE_NOR}"
 FLASHLAYOUT_PARTITION_DEVICE_nor-emmc          = "${DEVICE_NOR}"
 FLASHLAYOUT_PARTITION_DEVICE_nor-emmc_bootfs   = "${DEVICE_EMMC}"
@@ -211,6 +217,7 @@ FLASHLAYOUT_PARTITION_OFFSET_emmc_fsbl1 = "boot1"
 FLASHLAYOUT_PARTITION_OFFSET_emmc_fsbl2 = "boot2"
 FLASHLAYOUT_PARTITION_OFFSET_emmc_ssbl  = "${DEVICE_START_OFFSET_mmc1}"
 FLASHLAYOUT_PARTITION_OFFSET_nand-4-256_fsbl1 = "${DEVICE_START_OFFSET_nand0}"
+FLASHLAYOUT_PARTITION_OFFSET_nand-2-128_fsbl1 = "${DEVICE_START_OFFSET_nand0}"
 FLASHLAYOUT_PARTITION_OFFSET_nor-sdcard_fsbl1  = "${DEVICE_START_OFFSET_nor0}"
 FLASHLAYOUT_PARTITION_OFFSET_nor-sdcard_bootfs = "${DEVICE_START_OFFSET_mmc0}"
 FLASHLAYOUT_PARTITION_OFFSET_nor-emmc_fsbl1  = "${DEVICE_START_OFFSET_nor0}"
@@ -222,6 +229,7 @@ FLASHLAYOUT_PARTITION_OFFSET_sdcard_fsbl1 = "${DEVICE_START_OFFSET_mmc0}"
 # Size defined in Kbytes
 FLASHLAYOUT_PARTITION_SIZE_fsbl1    = "256"
 FLASHLAYOUT_PARTITION_SIZE_nand-4-256_fsbl1 = "2048"
+FLASHLAYOUT_PARTITION_SIZE_nand-2-128_fsbl1 = "2048"
 FLASHLAYOUT_PARTITION_SIZE_fsbl2    = "256"
 FLASHLAYOUT_PARTITION_SIZE_ssbl     = "2048"
 FLASHLAYOUT_PARTITION_SIZE_ssbl2    = "2048"
@@ -237,6 +245,10 @@ FLASHLAYOUT_PARTITION_SIZE_empty3   = "${FLASHLAYOUT_PARTITION_SIZE_ssbl}"
 FLASHLAYOUT_PARTITION_SIZE_nand-4-256_teeh  = "512"
 FLASHLAYOUT_PARTITION_SIZE_nand-4-256_teed  = "512"
 FLASHLAYOUT_PARTITION_SIZE_nand-4-256_teex  = "512"
+
+FLASHLAYOUT_PARTITION_SIZE_nand-2-128_teeh  = "512"
+FLASHLAYOUT_PARTITION_SIZE_nand-2-128_teed  = "512"
+FLASHLAYOUT_PARTITION_SIZE_nand-2-128_teex  = "512"
 
 FLASHLAYOUT_PARTITION_SIZE_bootfs   = "${BOOTFS_PARTITION_SIZE}"
 FLASHLAYOUT_PARTITION_SIZE_vendorfs = "${VENDORFS_PARTITION_SIZE}"
@@ -258,7 +270,7 @@ FLASHLAYOUT_PARTITION_BIN2LOAD_teeh         = "tee-header_v2.stm32"
 FLASHLAYOUT_PARTITION_BIN2LOAD_teed         = "tee-pageable_v2.stm32"
 FLASHLAYOUT_PARTITION_BIN2LOAD_teex         = "tee-pager_v2.stm32"
 FLASHLAYOUT_PARTITION_BIN2LOAD_logo         = "none"
-FLASHLAYOUT_PARTITION_BIN2LOAD_ubifs        = "${IMAGE_LINK_NAME}_nand_4_256_multivolume.ubi"
+FLASHLAYOUT_PARTITION_BIN2LOAD_ubifs        = "${IMAGE_LINK_NAME}_nand_2_128_multivolume.ubi"
 FLASHLAYOUT_PARTITION_BIN2LOAD_bootfs       = "${STM32MP_BOOTFS_IMAGE}-${DISTRO}-${MACHINE}.ext4"
 FLASHLAYOUT_PARTITION_BIN2LOAD_vendorfs     = "${STM32MP_VENDORFS_IMAGE}-${DISTRO}-${MACHINE}.ext4"
 FLASHLAYOUT_PARTITION_BIN2LOAD_rootfs       = "${IMAGE_LINK_NAME}.ext4"
