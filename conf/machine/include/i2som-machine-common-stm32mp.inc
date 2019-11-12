@@ -86,13 +86,16 @@ MOUNT_PARTITIONS_LIST  = "${STM32MP_BOOTFS_LABEL},${STM32MP_BOOTFS_MOUNTPOINT_IM
 MOUNT_PARTITIONS_LIST += "${STM32MP_USERFS_LABEL},${STM32MP_USERFS_MOUNTPOINT_IMAGE}"
 MOUNT_PARTITIONS_LIST += "${STM32MP_VENDORFS_LABEL},${STM32MP_VENDORFS_MOUNTPOINT_IMAGE}"
 
-# Define image partition size (supposed to be set as max size in image recipe)
+# Define image partition size (supposed to be set as max size in image recipe) 64MB
 BOOTFS_PARTITION_SIZE = "65536"
 # New value proposed for rootfs is 768MB
-ROOTFS_PARTITION_SIZE = "768432"
+#ROOTFS_PARTITION_SIZE = "768432"
+ROOTFS_PARTITION_SIZE = "307200"
 # If we consider the highest constraint is NAND size (so < 1GB)
 # Boot binaries 4 MB max (with optee) + bootfs 64 MB max + rootfs 768 MB max + userfs size (4*32MB) < 1024 MB
-USERFS_PARTITION_SIZE = "131072"
+#USERFS_PARTITION_SIZE = "131072"
+# Boot binaries 4 MB max (with optee) + bootfs 64 MB max + rootfs 300 MB max + userfs size (100MB) < 496 MB
+USERFS_PARTITION_SIZE = "102400"
 # New value proposed for vendorfs is 16MB
 VENDORFS_PARTITION_SIZE = "16384"
 
@@ -117,8 +120,14 @@ IMAGE_ROOTFS_MAXSIZE ?= "${ROOTFS_PARTITION_SIZE}"
 MKUBIFS_ARGS_nand_4_256 = "--min-io-size 4096 --leb-size 253952 --max-leb-cnt 4096 --space-fixup"
 UBINIZE_ARGS_nand_4_256 = "--min-io-size 4096 --peb-size 256KiB"
 
+# UBI Args for NAND soldered by default on i2S-MP15X
+# Micron MT29F4G08 capacity is 512MB
+# LEB = BLOCK_SIZE - (2 * page size): 128*1024 - (2*2048)
+MKUBIFS_ARGS_nand_2_128 = "--min-io-size 2048 --leb-size 126976 --max-leb-cnt 4096 --space-fixup"
+UBINIZE_ARGS_nand_2_128 = "--min-io-size 2048 --peb-size 128KiB"
+
 # Define UBI labels to build
-MULTIUBI_BUILD_append = " nand_4_256 "
+#MULTIUBI_BUILD_append = " nand_2_128 "
 
 # Set on machine side the UBI volume label for ROOTFS image to apply to reuse it
 # on kernel command line to mount UBI file system
