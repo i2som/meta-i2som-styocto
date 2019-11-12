@@ -165,7 +165,7 @@ UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd070p1024c-emmc         = "/stm32mp1
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-mipi-emmc         = "/stm32mp157a-panguboard-mipi.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-sdcard       = "/stm32mp157a-panguboard.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd043p800c-sdcard       = "/stm32mp157a-panguboard-lcd043p800c.dtb"
-UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd070p1024c-sdcard       = "/stm32mp157a-panguboard-lcd043p1024c.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd070p1024c-sdcard       = "/stm32mp157a-panguboard-lcd070p1024c.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-mipi-sdcard       = "/stm32mp157a-panguboard-mipi.dtb"
 # Define ROOT overrides for all labels
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-emmc         = "${EXTLINUX_ROOT_EMMC}"
