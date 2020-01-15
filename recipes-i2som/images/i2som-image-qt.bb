@@ -155,6 +155,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     packagegroup-framework-tools-ui         \
     packagegroup-framework-tools-python2    \
     packagegroup-framework-tools-python3    \
+    python3-pyqt5			    \
     \
     packagegroup-core-eclipse-debug         \
     \
