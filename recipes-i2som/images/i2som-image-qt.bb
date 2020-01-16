@@ -157,6 +157,7 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     packagegroup-framework-tools-python3    \
     python3-pyqt5			    \
     \
+    tzdata				    \
     packagegroup-core-eclipse-debug         \
     \
     packagegroup-framework-tools-network-extra  \
