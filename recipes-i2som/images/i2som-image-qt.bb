@@ -155,9 +155,9 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     packagegroup-framework-tools-ui         \
     packagegroup-framework-tools-python2    \
     packagegroup-framework-tools-python3    \
-    python3-pyqt5			    \
     \
     tzdata				    \
+    htop                                    \
     packagegroup-core-eclipse-debug         \
     \
     packagegroup-framework-tools-network-extra  \
@@ -169,5 +169,5 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     \
     ${IMAGE_QT_MANDATORY_PART}  \
     ${IMAGE_QT_OPTIONAL_PART}   \
-    ${IMAGE_QT_EXAMPLES_PART}   \
+    python3-pyqt5			    \
     "
