@@ -6,22 +6,15 @@ HOMEPAGE = "http://i2som.com"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-DEPENDS = "qtbase"
-
 # The resutling packages are machine dependent, because the phytec-qtdemo.service
 # unit is different for ti33x machines.
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 PR = "r0"
 
-SRC_URI = "git://github.com/i2som/i2bootchoose.git;protocol=git;"
-SRCREV = "0f3b0aa010d409bb8542014701794391c6f3682f"
+SRC_URI = "git://github.com/i2som/i2bootchoose-cli.git;protocol=git;"
+SRCREV = "18fbb41a81f86d305f2814c99326f4730b16097c"
 PV = "0.1+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-inherit qmake5
-
-do_install_append() {
-    install -d ${D}${bindir}
-    install -m 0777 i2bootchoose ${D}${bindir}/i2bootchoose
-}
+inherit cmake
