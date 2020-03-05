@@ -113,4 +113,12 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     ${IMAGE_OPTEE_PART}                         \
     \
     ${IMAGE_TPM_PART}                           \
+    source-han-sans-cn-fonts                    \
+    ttf-wqy-zenhei                              \
+    tzdata                                      \
+    lua                                         \
+    lua-periphery                               \
+    lighttpd                                    \
+    libmodbus                                   \
+    dbus                                        \
     "
