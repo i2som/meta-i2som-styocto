@@ -1,1 +1,1 @@
-PACKAGECONFIG_append = " tslib "
+PACKAGECONFIG_append = " tslib dbus "
