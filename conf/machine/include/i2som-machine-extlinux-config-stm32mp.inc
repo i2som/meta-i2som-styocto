@@ -14,7 +14,7 @@ UBOOT_EXTLINUX_CONFIG_FLAGS += "${@bb.utils.contains('FLASHLAYOUT_CONFIG_LABELS'
 UBOOT_EXTLINUX_DEVICEFLAG_emmc          ?= "${PANGU_DT_FILE}"
 UBOOT_EXTLINUX_DEVICEFLAG_emmc-optee    ?= "${STM32MP_DT_FILES_ED} ${STM32MP_DT_FILES_EV}"
 UBOOT_EXTLINUX_DEVICEFLAG_nand          ?= "${PANGU_DT_FILE}"
-UBOOT_EXTLINUX_DEVICEFLAG_nor-emmc      ?= "${STM32MP_DT_FILES_EV}"
+UBOOT_EXTLINUX_DEVICEFLAG_nor-emmc      ?= "${STM32MP_DT_FILES_EV} ${PANGU_DT_FILE}"
 UBOOT_EXTLINUX_DEVICEFLAG_nor-sdcard    ?= "${STM32MP_DT_FILES_EV}"
 UBOOT_EXTLINUX_DEVICEFLAG_sdcard        ?= "${PANGU_DT_FILE}"
 UBOOT_EXTLINUX_DEVICEFLAG_sdcard-optee  ?= "${STM32MP_DT_FILES_DK} ${STM32MP_DT_FILES_ED} ${STM32MP_DT_FILES_EV}"
@@ -28,11 +28,14 @@ EXTLINUX_BOOTDEVICE_NAND      = "nand0"
 
 # Set generic extlinux root variable to ease definition
 EXTLINUX_ROOT_EMMC         = "root=/dev/mmcblk1p4"
+EXTLINUX_ROOT_EMMC_i2cmp15xbe       = "root=/dev/mmcblk2p4"
 EXTLINUX_ROOT_EMMC_OPTEE   = "root=/dev/mmcblk1p7"
 EXTLINUX_ROOT_NAND         = "ubi.mtd=UBI rootfstype=ubifs root=ubi0:rootfs"
 EXTLINUX_ROOT_NOREMMC      = "root=/dev/mmcblk1p3"
+EXTLINUX_ROOT_NOREMMC_i2cmp15xbe      = "root=/dev/mmcblk2p3"
 EXTLINUX_ROOT_NORSDCARD    = "root=/dev/mmcblk0p3"
 EXTLINUX_ROOT_SDCARD       = "root=/dev/mmcblk0p6"
+EXTLINUX_ROOT_SDCARD_i2cmp15xbe       = "root=/dev/mmcblk1p6"
 EXTLINUX_ROOT_SDCARD_OPTEE = "root=/dev/mmcblk0p9"
 
 # -----------------------------------------------------------------------------
@@ -209,27 +212,42 @@ UBOOT_EXTLINUX_ROOT_stm32mp157a-i2cmp15xbn-lcd043p800c-sdcard         = "${EXTLI
 # -----------------------------------------------------------------------------
 # Define available targets to use
 UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157a-i2cmp15xbe_emmc"
+UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157a-i2cmp15xbe_nor-emmc"
 UBOOT_EXTLINUX_CONFIGURED_TARGETS += "mp157a-i2cmp15xbe_sdcard"
 
 # Define bootprefix for each target
 UBOOT_EXTLINUX_BOOTPREFIXES_mp157a-i2cmp15xbe_emmc         = "${EXTLINUX_BOOTDEVICE_EMMC}_i2cmp15xbe_"
+UBOOT_EXTLINUX_BOOTPREFIXES_mp157a-i2cmp15xbe_nor-emmc         = "${EXTLINUX_BOOTDEVICE_NOREMMC}_i2cmp15xbe_"
 UBOOT_EXTLINUX_BOOTPREFIXES_mp157a-i2cmp15xbe_sdcard         = "${EXTLINUX_BOOTDEVICE_SDCARD}_i2cmp15xbe_"
 
 # Define labels for each target
 UBOOT_EXTLINUX_LABELS_mp157a-i2cmp15xbe_emmc         = "stm32mp157a-i2cmp15xbe-lcd043p800c-emmc"
-UBOOT_EXTLINUX_LABELS_mp157a-i2cmp15xbe_sdcard         = "stm32mp157a-i2cmp15xbe-lcd043p800c-sdcard"
+UBOOT_EXTLINUX_LABELS_mp157a-i2cmp15xbe_emmc         += "stm32mp157a-i2cmp15xbe-lcd070p1024c-emmc"
+UBOOT_EXTLINUX_LABELS_mp157a-i2cmp15xbe_nor-emmc         = "stm32mp157a-i2cmp15xbe-lcd043p800c-nor-emmc"
+UBOOT_EXTLINUX_LABELS_mp157a-i2cmp15xbe_nor-emmc         += "stm32mp157a-i2cmp15xbe-lcd070p1024c-nor-emmc"
+UBOOT_EXTLINUX_LABELS_mp157a-i2cmp15xbe_sdcard       = "stm32mp157a-i2cmp15xbe-lcd043p800c-sdcard"
+UBOOT_EXTLINUX_LABELS_mp157a-i2cmp15xbe_sdcard       += "stm32mp157a-i2cmp15xbe-lcd070p1024c-sdcard"
 
 # Define default boot config for each target
-UBOOT_EXTLINUX_DEFAULT_LABEL_mp157a-i2cmp15xbe_emmc         ?= "stm32mp157a-i2cmp15xbe-lcd043p800c-emmc"
-UBOOT_EXTLINUX_DEFAULT_LABEL_mp157a-i2cmp15xbe_sdcard         ?= "stm32mp157a-i2cmp15xbe-lcd043p800c-sdcard"
+UBOOT_EXTLINUX_DEFAULT_LABEL_mp157a-i2cmp15xbe_emmc         ?= "stm32mp157a-i2cmp15xbe-lcd070p1024c-emmc"
+UBOOT_EXTLINUX_DEFAULT_LABEL_mp157a-i2cmp15xbe_nor-emmc         ?= "stm32mp157a-i2cmp15xbe-lcd070p1024c-nor-emmc"
+UBOOT_EXTLINUX_DEFAULT_LABEL_mp157a-i2cmp15xbe_sdcard         ?= "stm32mp157a-i2cmp15xbe-lcd070p1024c-sdcard"
 
 # Define FDT overrides for all labels
 UBOOT_EXTLINUX_FDT_stm32mp157a-i2cmp15xbe-lcd043p800c-emmc         = "/stm32mp157a-i2cmp15xbe-lcd043p800c.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-i2cmp15xbe-lcd070p1024c-emmc         = "/stm32mp157a-i2cmp15xbe-lcd070p1024c.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-i2cmp15xbe-lcd043p800c-nor-emmc         = "/stm32mp157a-i2cmp15xbe-lcd043p800c.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-i2cmp15xbe-lcd070p1024c-nor-emmc         = "/stm32mp157a-i2cmp15xbe-lcd070p1024c.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-i2cmp15xbe-lcd043p800c-sdcard         = "/stm32mp157a-i2cmp15xbe-lcd043p800c.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-i2cmp15xbe-lcd070p1024c-sdcard         = "/stm32mp157a-i2cmp15xbe-lcd070p1024c.dtb"
 
 # Define ROOT overrides for all labels
 UBOOT_EXTLINUX_ROOT_stm32mp157a-i2cmp15xbe-lcd043p800c-emmc         = "${EXTLINUX_ROOT_EMMC}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-i2cmp15xbe-lcd070p1024c-emmc         = "${EXTLINUX_ROOT_EMMC}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-i2cmp15xbe-lcd043p800c-nor-emmc         = "${EXTLINUX_ROOT_NOREMMC}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-i2cmp15xbe-lcd070p1024c-nor-emmc         = "${EXTLINUX_ROOT_NOREMMC}"
 UBOOT_EXTLINUX_ROOT_stm32mp157a-i2cmp15xbe-lcd043p800c-sdcard         = "${EXTLINUX_ROOT_SDCARD}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-i2cmp15xbe-lcd070p1024c-sdcard         = "${EXTLINUX_ROOT_SDCARD}"
 
 
 # -----------------------------------------------------------------------------
