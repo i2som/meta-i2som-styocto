@@ -28,6 +28,7 @@ EXTLINUX_BOOTDEVICE_NAND      = "nand0"
 
 # Set generic extlinux root variable to ease definition
 EXTLINUX_ROOT_EMMC         = "root=/dev/mmcblk1p4"
+EXTLINUX_ROOT_EMMC_GIANTAXE         = "root=/dev/mmcblk2p4"
 EXTLINUX_ROOT_EMMC_i2cmp15xbe       = "root=/dev/mmcblk2p4"
 EXTLINUX_ROOT_EMMC_OPTEE   = "root=/dev/mmcblk1p7"
 EXTLINUX_ROOT_NAND         = "ubi.mtd=UBI rootfstype=ubifs root=ubi0:rootfs"
@@ -36,6 +37,7 @@ EXTLINUX_ROOT_NOREMMC_i2cmp15xbe      = "root=/dev/mmcblk2p3"
 EXTLINUX_ROOT_NORSDCARD    = "root=/dev/mmcblk0p3"
 EXTLINUX_ROOT_SDCARD       = "root=/dev/mmcblk0p6"
 EXTLINUX_ROOT_SDCARD_i2cmp15xbe       = "root=/dev/mmcblk1p6"
+EXTLINUX_ROOT_SDCARD_GIANTAXE       = "root=/dev/mmcblk1p6"
 EXTLINUX_ROOT_SDCARD_OPTEE = "root=/dev/mmcblk0p9"
 
 # -----------------------------------------------------------------------------
@@ -154,10 +156,19 @@ UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         = "stm32mp157a-panguboard-e
 UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         += "stm32mp157a-panguboard-lcd043p800c-emmc"
 UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         += "stm32mp157a-panguboard-lcd070p1024c-emmc"
 UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         += "stm32mp157a-panguboard-mipi-emmc"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         += "stm32mp157a-panguboard-hdmi-giantaxe-emmc"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         += "stm32mp157a-panguboard-lcd043p800c-giantaxe-emmc"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         += "stm32mp157a-panguboard-lcd070p1024c-giantaxe-emmc"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_emmc         += "stm32mp157a-panguboard-mipi-giantaxe-emmc"
+
 UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       = "stm32mp157a-panguboard-sdcard"
 UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       += "stm32mp157a-panguboard-lcd043p800c-sdcard"
 UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       += "stm32mp157a-panguboard-lcd070p1024c-sdcard"
 UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       += "stm32mp157a-panguboard-mipi-sdcard"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       += "stm32mp157a-panguboard-hdmi-giantaxe-sdcard"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       += "stm32mp157a-panguboard-lcd043p800c-giantaxe-sdcard"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       += "stm32mp157a-panguboard-lcd070p1024c-giantaxe-sdcard"
+UBOOT_EXTLINUX_LABELS_mp157a-panguboard_sdcard       += "stm32mp157a-panguboard-mipi-giantaxe-sdcard"
 # Define default boot config for each target
 UBOOT_EXTLINUX_DEFAULT_LABEL_mp157a-panguboard_emmc         ?= "stm32mp157a-panguboard-emmc"
 UBOOT_EXTLINUX_DEFAULT_LABEL_mp157a-panguboard_sdcard       ?= "stm32mp157a-panguboard-sdcard"
@@ -166,19 +177,38 @@ UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-emmc         = "/stm32mp157a-panguboar
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd043p800c-emmc         = "/stm32mp157a-panguboard-lcd043p800c.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd070p1024c-emmc         = "/stm32mp157a-panguboard-lcd070p1024c.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-mipi-emmc         = "/stm32mp157a-panguboard-mipi.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-hdmi-giantaxe-emmc         = "/stm32mp157a-panguboard-hdmi-giantaxe.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd043p800c-giantaxe-emmc         = "/stm32mp157a-panguboard-lcd043p800c-giantaxe.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd070p1024c-giantaxe-emmc         = "/stm32mp157a-panguboard-lcd070p1024c-giantaxe.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-mipi-giantaxe-emmc         = "/stm32mp157a-panguboard-mipi-giantaxe.dtb"
+
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-sdcard       = "/stm32mp157a-panguboard.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd043p800c-sdcard       = "/stm32mp157a-panguboard-lcd043p800c.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd070p1024c-sdcard       = "/stm32mp157a-panguboard-lcd070p1024c.dtb"
 UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-mipi-sdcard       = "/stm32mp157a-panguboard-mipi.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-hdmi-giantaxe-sdcard       = "/stm32mp157a-panguboard-hdmi-giantaxe.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd043p800c-giantaxe-sdcard       = "/stm32mp157a-panguboard-lcd043p800c-giantaxe.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-lcd070p1024c-giantaxe-sdcard       = "/stm32mp157a-panguboard-lcd070p1024c-giantaxe.dtb"
+UBOOT_EXTLINUX_FDT_stm32mp157a-panguboard-mipi-giantaxe-sdcard       = "/stm32mp157a-panguboard-mipi-giantaxe.dtb"
+
 # Define ROOT overrides for all labels
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-emmc         = "${EXTLINUX_ROOT_EMMC}"
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-mipi-emmc       = "${EXTLINUX_ROOT_EMMC}"
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd043p800c-emmc       = "${EXTLINUX_ROOT_EMMC}"
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd070p1024c-emmc       = "${EXTLINUX_ROOT_EMMC}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-hdmi-giantaxe-emmc         = "${EXTLINUX_ROOT_EMMC_GIANTAXE}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-mipi-giantaxe-emmc       = "${EXTLINUX_ROOT_EMMC_GIANTAXE}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd043p800c-giantaxe-emmc       = "${EXTLINUX_ROOT_EMMC_GIANTAXE}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd070p1024c-giantaxe-emmc       = "${EXTLINUX_ROOT_EMMC_GIANTAXE}"
+
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-sdcard       = "${EXTLINUX_ROOT_SDCARD}"
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-mipi-sdcard       = "${EXTLINUX_ROOT_SDCARD}"
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd043p800c-sdcard       = "${EXTLINUX_ROOT_SDCARD}"
 UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd070p1024c-sdcard       = "${EXTLINUX_ROOT_SDCARD}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-hdmi-giantaxe-sdcard       = "${EXTLINUX_ROOT_SDCARD_GIANTAXE}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-mipi-giantaxe-sdcard       = "${EXTLINUX_ROOT_SDCARD_GIANTAXE}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd043p800c-giantaxe-sdcard       = "${EXTLINUX_ROOT_SDCARD_GIANTAXE}"
+UBOOT_EXTLINUX_ROOT_stm32mp157a-panguboard-lcd070p1024c-giantaxe-sdcard       = "${EXTLINUX_ROOT_SDCARD_GIANTAXE}"
 
 # -----------------------------------------------------------------------------
 # i2C-MP15X-B NAND configuration
