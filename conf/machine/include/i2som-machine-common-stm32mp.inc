@@ -48,10 +48,10 @@ STM32MP_DEVICETREE_append = " ${STM32MP_DT_FILES_EV} "
 # =========================================================================
 # Machine specific packages
 # =========================================================================
-MACHINE_EXTRA_RRECOMMENDS_append = " ${@bb.utils.contains('MACHINE_FEATURES', 'wifi', 'linux-firmware-bcm43430', '', d)} "
+#MACHINE_EXTRA_RRECOMMENDS_append = " ${@bb.utils.contains('MACHINE_FEATURES', 'wifi', 'linux-firmware-bcm43430', '', d)} "
 MACHINE_EXTRA_RRECOMMENDS_append = " ${@bb.utils.contains('DISTRO_FEATURES','systemd',' wifi-suspend ','',d)} "
 MACHINE_EXTRA_RRECOMMENDS_append = " m4projects-stm32mp1 "
-MACHINE_EXTRA_RRECOMMENDS_append = " linux-examples-stm32mp1 "
+#MACHINE_EXTRA_RRECOMMENDS_append = " linux-examples-stm32mp1 "
 MACHINE_EXTRA_RRECOMMENDS_append = " m4fwcoredump "
 # Enable Software watchdog when sysvinit
 # We enable it to be aligned with the activation within u-boot https://gerrit.st.com/#/c/102528
@@ -66,7 +66,7 @@ IMAGE_CLASSES += "image_types-stubi st-partitions-image"
 STM32MP_BOOTFS_IMAGE = "i2som-image-bootfs"
 STM32MP_BOOTFS_LABEL = "boot"
 STM32MP_BOOTFS_MOUNTPOINT_IMAGE = "/boot"
-STM32MP_USERFS_IMAGE = "st-image-userfs"
+STM32MP_USERFS_IMAGE = "i2som-image-userfs"
 STM32MP_USERFS_LABEL = "userfs"
 STM32MP_USERFS_MOUNTPOINT_IMAGE = "/usr/local"
 STM32MP_VENDORFS_IMAGE = "st-image-vendorfs"
