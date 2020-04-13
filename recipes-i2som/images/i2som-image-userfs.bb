@@ -38,6 +38,8 @@ QT_APPS = " \
 	led-switch \
 	doodleboard \
 	openglcube \
+	qkeydump \
+	qstudemo \
 "
 C_LANG_APPS = " \
 	linux-example-c \
