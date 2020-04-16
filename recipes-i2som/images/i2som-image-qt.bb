@@ -170,10 +170,13 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     ${IMAGE_QT_MANDATORY_PART}  \
     ${IMAGE_QT_OPTIONAL_PART}   \
     ${IMAGE_QT_EXAMPLES_PART}   \
-    python3-pyqt5			    \
     source-han-sans-cn-fonts    \
     ttf-wqy-zenhei              \
     lighttpd                    \
     lua                         \
     lua-periphery \
+    ffmpeg \
+    net-tools \
+    phytool \
+    sqlite3 \
     "
