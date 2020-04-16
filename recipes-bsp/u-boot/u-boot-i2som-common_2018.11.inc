@@ -11,7 +11,7 @@ DEPENDS += "flex-native bison-native"
 
 COMPATIBLE_MACHINE = "(stm32mpcommon)"
 
-SRC_URI = "git:///${HOME}/PanGu/u-boot-st;protocol=file"
+SRC_URI = "git:///${HOME}/i2SOM-STM32MP1/u-boot-st;protocol=file"
 SRCREV = ""
 
 U_BOOT_VERSION = "2018.11"

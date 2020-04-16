@@ -16,7 +16,7 @@ require tf-a-i2som-common.inc
 # ---------------------------------
 BBCLASSEXTEND = "devupstream:target"
 
-SRC_URI = "git://${HOME}/PanGu/arm-trusted-firmware;protocol=file;name=tfa;branch=panguboard"
+SRC_URI = "git://${HOME}/i2SOM-STM32MP1/arm-trusted-firmware;protocol=file;name=tfa;branch=panguboard"
 SRCREV = "a26789cad72229dd8a2a30ab510c3386d3ccfc35"
 SRCREV_FORMAT = "tfa"
 PV = "${TF_VERSION}+github+${SRCPV}"
