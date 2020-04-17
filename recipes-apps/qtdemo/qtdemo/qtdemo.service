@@ -1,10 +1,10 @@
-[unit]
+[Unit]
 Description=Qt SmartHome
 After=multi-user.target
 
 [Service]
 Type=simple
-user=root
+User=root
 ExecStart=/usr/local/qtdemo.sh
 #Restart=always
 
