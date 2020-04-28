@@ -1,7 +1,7 @@
 #@DESCRIPTION: Common Machine configuration for STM32 systems
 
 require conf/machine/include/i2som-machine-extlinux-config-stm32mp.inc
-require conf/machine/include/st-machine-features-stm32mp.inc
+require conf/machine/include/i2som-machine-features-stm32mp.inc
 require conf/machine/include/i2som-machine-flashlayout-stm32mp.inc
 require conf/machine/include/st-machine-flashlayout-deleteall-stm32mp.inc
 
