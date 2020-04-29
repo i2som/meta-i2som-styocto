@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend_i2cmp15xbe := "${THISDIR}/${PN}:"
-SRC_URI_append_i2cmp15xbe = " \
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI_append = " \
 	file://mount-partitions.sh \
 	"
