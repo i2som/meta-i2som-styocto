@@ -35,7 +35,8 @@ ALSA_ADDONS_INSTALL = "${@bb.utils.contains('COMBINED_FEATURES', 'alsa', '${ALSA
 #
 # bluetooth
 #
-BLUETOOTH_LIST          = " linux-firmware-bluetooth-bcm4343 "
+#BLUETOOTH_LIST          = " linux-firmware-bluetooth-bcm4343 "
+BLUETOOTH_LIST          = " bluez-alsa "
 BLUETOOTH_IMAGE_INSTALL = "${@bb.utils.contains('MACHINE_FEATURES', 'bluetooth', '${BLUETOOTH_LIST}', '', d)} "
 
 #------------------
@@ -50,5 +51,5 @@ MACHINE_EXTRA_RRECOMMENDS_append = " \
     ${GPU_IMAGE_INSTALL}      \
     ${OPTEE_IMAGE_INSTALL}    \
     ${ALSA_ADDONS_INSTALL}    \
+    ${BLUETOOTH_IMAGE_INSTALL} \
     "
-#${BLUETOOTH_IMAGE_INSTALL}
