@@ -15,7 +15,7 @@ S = "${WORKDIR}/git"
 BBCLASSEXTEND = "devupstream:target"
 
 SRC_URI = "git:///${HOME}/i2SOM-STM32MP1/linux-st;protocol=file;branch=v${LINUX_VERSION}-r1.4-pangu;name=linux"
-SRCREV = "ef13b6fb251d52984793d3aba4c9d19f822047c4"
+SRCREV = "44c0cc69d56774aec6628be08ae9dab9e14be97d"
 SRCREV_FORMAT = "linux"
 PV = "${LINUX_VERSION}+github+${SRCPV}"
 
@@ -31,7 +31,7 @@ PV = "${LINUX_VERSION}+github+${SRCPV}"
 #
 KERNEL_DEFCONFIG        = "i2som_panguboard_defconfig"
 KERNEL_CONFIG_FRAGMENTS = "${@bb.utils.contains('KERNEL_DEFCONFIG', 'i2som_panguboard_defconfig', '${S}/arch/arm/configs/fragment-01-multiv7_cleanup.config', '', d)}"
-KERNEL_CONFIG_FRAGMENTS += "${@bb.utils.contains('KERNEL_DEFCONFIG', 'i2som_panguboard_defconfig', '${S}/arch/arm/configs/fragment-02-multiv7_addons.config', '', d)}"
+#KERNEL_CONFIG_FRAGMENTS += "${@bb.utils.contains('KERNEL_DEFCONFIG', 'i2som_panguboard_defconfig', '${S}/arch/arm/configs/fragment-02-multiv7_addons.config', '', d)}"
 #KERNEL_CONFIG_FRAGMENTS += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '${WORKDIR}/fragments/4.19/fragment-03-systemd.config', '', d)} "
 #KERNEL_CONFIG_FRAGMENTS += "${@bb.utils.contains('COMBINED_FEATURES', 'optee', '${WORKDIR}/fragments/4.19/fragment-04-optee.config', '', d)}"
 #KERNEL_CONFIG_FRAGMENTS += "${WORKDIR}/fragments/4.19/fragment-05-modules.config"
