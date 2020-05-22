@@ -3,4 +3,4 @@
 UBOOT_CONFIG = "sandbox"
 UBOOT_CONFIG[sandbox] = "sandbox_defconfig"
 
-COMPATIBLE_MACHINE = "(pangu)"
+COMPATIBLE_MACHINE = "(pangu|i2cmp15xbe|i2cmp15xbn)"

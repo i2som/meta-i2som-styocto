@@ -29,6 +29,7 @@ PACKAGE_INSTALL += " \
 	dbus \
 	swupdate \
 	u-boot-fw-utils \
+	libgpiod \
 "
 
 IMAGE_ROOTFS_SIZE = "8192"

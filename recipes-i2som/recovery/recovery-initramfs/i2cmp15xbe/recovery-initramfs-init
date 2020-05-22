@@ -382,7 +382,7 @@ else
     log "The update file is ${update_package}"
 fi
 
-swupdate -i ${update_package}
+swupdate -H i2cmp15xbe:1.0 -i ${update_package}
 if [ "$?" = "0" ]; then
     log "Firmware update process succeed!"
 
@@ -393,10 +393,10 @@ if [ "$?" = "0" ]; then
 #    fi
 
     #log "The device will reboot and boot into working system!!!"
-    echo 1 > /sys/class/leds/user1/brightness
+    gpioset gpiochip0 13=0
 else
     quit_with_error "Error executing the firmware update"
-    echo 0 > /sys/class/leds/user1/brightness
+    gpioset gpiochip0 13=1
     echo 0 > /sys/class/leds/cpu/brightness
 fi
 while true
