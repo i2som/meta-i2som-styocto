@@ -382,7 +382,7 @@ else
     log "The update file is ${update_package}"
 fi
 
-swupdate -i ${update_package}
+swupdate -H panguboard:1.0 -i ${update_package}
 if [ "$?" = "0" ]; then
     log "Firmware update process succeed!"
 
