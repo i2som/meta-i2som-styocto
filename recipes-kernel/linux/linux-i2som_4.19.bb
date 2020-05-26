@@ -15,7 +15,7 @@ S = "${WORKDIR}/git"
 BBCLASSEXTEND = "devupstream:target"
 
 SRC_URI = "git:///${HOME}/i2SOM-STM32MP1/linux-st;protocol=file;branch=v${LINUX_VERSION}-r1.4-pangu;name=linux"
-SRCREV = "44c0cc69d56774aec6628be08ae9dab9e14be97d"
+SRCREV = "1553f8247f3c3ebeb4067039072b5fec160f8a95"
 SRCREV_FORMAT = "linux"
 PV = "${LINUX_VERSION}+github+${SRCPV}"
 
