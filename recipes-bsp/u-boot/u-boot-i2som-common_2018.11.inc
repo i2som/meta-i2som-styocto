@@ -25,7 +25,7 @@ S = "${WORKDIR}/u-boot-${PV}"
 BBCLASSEXTEND = "devupstream:target"
 
 #SRC_URI_class-devupstream = "git://github.com/STMicroelectronics/u-boot.git;name=uboot;protocol=https;branch=v2018.11-stm32mp"
-SRC_URI_class-devupstream = "git:///${HOME}/PanGu/u-boot-st;name=uboot;protocol=file;branch=v2018.11-r2.2-pangu"
+SRC_URI_class-devupstream = "git:///${HOME}/i2SOM-STM32MP1/u-boot-st;name=uboot;protocol=file;branch=v2018.11-r2.2-pangu"
 SRCREV_class-devupstream = "c7e05a2b21de6e3848445e6000b03059433f3f6c"
 SRCREV_FORMAT_class-devupstream = "uboot"
 PV_class-devupstream = "${U_BOOT_VERSION}+github+${SRCPV}"
