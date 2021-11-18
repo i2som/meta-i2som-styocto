@@ -1,24 +1,20 @@
-SUMMARY = "i2SOM core image."
+SUMMARY = "The core image for console-only device."
 LICENSE = "MIT"
 
 include recipes-i2som/images/i2som-image.inc
 
-inherit core-image
+inherit core-image distro_features_check
+
+
+#CONFLICT_DISTRO_FEATURES = "x11 wayland"
 
 IMAGE_LINGUAS = "en-us"
 
 IMAGE_FEATURES += "\
     package-management \
-    ssh-server-dropbear \
+    ssh-server-openssh \
     "
-
-#
-# Display part addons
-#
-IMAGE_DISPLAY_PART = " \
-    libdrm          \
-    libdrm-tests    \
-"
+DISTRO_FEATURES_remove = "x11 wayland"
 
 #
 # Optee part addons
@@ -38,10 +34,15 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     packagegroup-framework-tools-kernel-base    \
     packagegroup-framework-tools-network-base   \
     packagegroup-framework-tools-audio-base     \
-    packagegroup-framework-tools-ui-base        \
     packagegroup-framework-tools-python2-base   \
     packagegroup-framework-tools-python3-base   \
     \
-    ${IMAGE_DISPLAY_PART}                       \
     ${IMAGE_OPTEE_PART}                         \
+	hostapd \
+	htop \
+	tzdata \
+	ntp \
+	ntp-utils \
+	netbase \
+	iperf3 \
     "
