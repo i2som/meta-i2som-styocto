@@ -8,6 +8,8 @@ SRC_URI = " \
     file://brcmfmac43430-sdio.bin \
     file://brcmfmac43430-sdio.clm_blob \
     file://brcmfmac43430-sdio.txt \
+    file://brcmfmac43430a0-sdio.bin \
+    file://brcmfmac43430a0-sdio.txt \
     file://LICENCE \
 "
 
@@ -23,6 +25,9 @@ do_install (){
 	install -m 0644 ${WORKDIR}/brcmfmac43430-sdio.clm_blob ${D}${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.clm_blob
 
 	install -m 644 ${WORKDIR}/BCM43430A1.hcd ${D}${nonarch_base_libdir}/firmware/brcm/BCM43430A1.hcd
+
+	install -m 0644 ${WORKDIR}/brcmfmac43430a0-sdio.bin ${D}${nonarch_base_libdir}/firmware/brcm/
+	install -m 0644 ${WORKDIR}/brcmfmac43430a0-sdio.txt ${D}${nonarch_base_libdir}/firmware/brcm/
 }
 
 
