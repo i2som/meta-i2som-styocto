@@ -14,7 +14,6 @@ IMAGE_FEATURES += "\
     package-management \
     ssh-server-openssh \
     "
-DISTRO_FEATURES_remove = "x11 wayland"
 
 #
 # Optee part addons
@@ -38,11 +37,14 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     packagegroup-framework-tools-python3-base   \
     \
     ${IMAGE_OPTEE_PART}                         \
+    packagegroup-i2som-core \
 	hostapd \
-	htop \
-	tzdata \
+    packagegroup-core-ssh-openssh \
+    packagegroup-core-eclipse-debug \
+    openssh-sshd \
+    openssh \
+    openssh-sftp \
+    openssh-sftp-server \
 	ntp \
 	ntp-utils \
-	netbase \
-	iperf3 \
     "
